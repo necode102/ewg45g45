@@ -40,7 +40,7 @@ getgenv().Loaded = true
 
     local themes = {
         preset = {
-            accent = rgb(108, 109, 152),
+            accent = rgb(217, 181, 158),
             window_outline = rgb(0, 0, 0),
             inline = rgb(25, 27, 27),
             background = rgb(17, 19, 19),
@@ -1033,9 +1033,9 @@ getgenv().Loaded = true
     -- Library element functions
         function Library:Window(properties)
             local Cfg = {
-                Prefix = properties.Prefix or "XEZIOS";
-                Suffix = properties.Suffix or "PRIME";
-                Size = properties.Size or dim2(0, 620, 0, 471);
+                Prefix = properties.Prefix or "RAZ";
+                Suffix = properties.Suffix or "VRAT";
+                Size = properties.Size or dim2(0, 620, 0, 491);
                 TabInfo;
                 Items = {};
             }
