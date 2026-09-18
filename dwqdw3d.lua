@@ -1033,9 +1033,9 @@ getgenv().Loaded = true
     -- Library element functions
         function Library:Window(properties)
             local Cfg = {
-                Prefix = properties.Prefix or "RAZ";
-                Suffix = properties.Suffix or "VRAT.CS";
-                Size = properties.Size or dim2(0, 640, 0, 491);
+                Prefix = properties.Prefix or "ASTROMA";
+                Suffix = properties.Suffix or ".TG";
+                Size = properties.Size or dim2(0, 740, 0, 451);
                 TabInfo;
                 Items = {};
             }
