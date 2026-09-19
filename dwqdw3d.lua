@@ -1034,8 +1034,8 @@ getgenv().Loaded = true
         function Library:Window(properties)
             local Cfg = {
                 Prefix = properties.Prefix or "ASTROMA";
-                Suffix = properties.Suffix or ".TG";
-                Size = properties.Size or dim2(0, 740, 0, 451);
+                Suffix = properties.Suffix or ".BETA";
+                Size = properties.Size or dim2(0, 740, 0, 551);
                 TabInfo;
                 Items = {};
             }
