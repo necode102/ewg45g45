@@ -1,15 +1,4 @@
---[[
 
-    XEZIOS
-    -> Made by @finobe 
-    -> Kind of got bored idk what to do with life
-]]
-
-if getgenv().Loaded then 
-    getgenv().Library:Unload()
-end 
-
-getgenv().Loaded = true 
 
 -- Variables 
     -- Services
