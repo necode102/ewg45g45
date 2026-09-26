@@ -1024,7 +1024,7 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
             local Cfg = {
                 Prefix = properties.Prefix or "ASTROMA";
                 Suffix = properties.Suffix or ".BETA";
-                Size = properties.Size or dim2(0, 740, 0, 581);
+                Size = properties.Size or dim2(0, 840, 0, 581);
                 TabInfo;
                 Items = {};
             }
