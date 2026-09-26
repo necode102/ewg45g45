@@ -29,15 +29,15 @@
 
     local themes = {
         preset = {
-    accent = rgb(220, 38, 38),         
-    window_outline = rgb(220, 220, 220), 
-    inline = rgb(255, 255, 255),         
-    background = rgb(250, 250, 250),    
-    visible_backgrounds = rgb(245, 245, 245), 
-    text_color = rgb(20, 20, 20),      
-    glow = rgb(255, 200, 200),          
-    deselected = rgb(180, 180, 180),   
-},
+            accent = rgb(236, 133, 131),
+            window_outline = rgb(0, 0, 0),
+            inline = rgb(25, 27, 27),
+            background = rgb(17, 19, 19),
+            visible_backgrounds = rgb(20, 23, 22),
+            text_color = rgb(221, 223, 222),
+            glow = rgb(0, 0, 0),
+            deselected = rgb(89, 91, 91),
+        },
         utility = {},
         gradients = {
             Selected = {};
