@@ -37,7 +37,7 @@
     text_color = rgb(20, 20, 20),      
     glow = rgb(255, 200, 200),          
     deselected = rgb(180, 180, 180),   
-}
+},
         utility = {},
         gradients = {
             Selected = {};
