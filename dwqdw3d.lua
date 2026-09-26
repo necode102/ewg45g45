@@ -900,7 +900,7 @@
             
             for Idx, Value in Flags do
                 if type(Value) == "table" and Value.key then
-                    Config[Idx] = {active = Value.Active, mode = Value.Mode, key = tostring(Value.Key)}
+    Config[Idx] = {active = Value.active, mode = Value.mode, key = tostring(Value.key)}
                 elseif type(Value) == "table" and Value["Transparency"] and Value["Color"] then
                     Config[Idx] = {Transparency = Value["Transparency"], Color = Value["Color"]:ToHex()}
                 else
@@ -924,8 +924,8 @@
                 if Function then 
                     if type(Value) == "table" and Value["Transparency"] and Value["Color"] then
                         Function(hex(Value["Color"]), Value["Transparency"])
-                    elseif type(Value) == "table" and Value["Active"] then 
-                        Function(Value)
+elseif type(Value) == "table" and Value["active"] ~= nil then
+    Function(Value)
                     else
                         Function(Value)
                     end
@@ -1865,7 +1865,7 @@
                 Ignore = properties.Ignore or false;
             }   
 
-            Cfg.Default = properties.Default or (Cfg.Multi and {Cfg.Items[1]}) or Cfg.Items[1] or "None"
+            Cfg.Default = properties.Default or (Cfg.Multi and {Cfg.Options[1]}) or Cfg.Options[1] or "None"
             Flags[Cfg.Flag] = Cfg.Default
             
             local Items = Cfg.Items; do 
