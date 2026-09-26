@@ -1689,7 +1689,7 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
                 Cfg.Set(Cfg.Enabled)
             end)
 
-            Cfg.Set(Cfg.Default)
+            Cfg.Set(Cfg.Enabled)
 
             ConfigFlags[Cfg.Flag] = Cfg.Set
 
@@ -2291,8 +2291,8 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
                 Cfg.Set(Items.Input.Text) 
             end) 
 
-            if Cfg.default then 
-                Cfg.Set(Cfg.default) 
+            if Cfg.Default then 
+                Cfg.Set(Cfg.Default) 
             end
 
             ConfigFlags[Cfg.Flag] = Cfg.Set
@@ -2649,10 +2649,10 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
 
             local Section = Tab:Section({Name = "Main", Side = "Left"})
             ConfigHolder = Section:Dropdown({Name = "Configs", Options = {"Report", "This", "Error", "To", "Finobe"}, Callback = function(option) if Text then Text.Set(option) end end, Flag = "config_Name_list"}); Library:UpdateConfigList()
-            Section:Textbox({Name = "Config Name:", Flag = "config_Name_text", default = ""})
-            Section:Button({Name = "Save", Callback = function() if Flags["config_Name_text"] == "" then return end writefile(Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg", Library:GetConfig()) Library:UpdateConfigList() Notifications:Create({Name = "Saved Config (" ..  Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg" .. ")"}) end})
-            Section:Button({Name = "Load", Callback = function() if Flags["config_Name_text"] == "" then return end Library:LoadConfig(readfile(Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg")) Library:UpdateConfigList() Notifications:Create({Name = "Loaded Config (" ..  Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg" .. ")"}) end})
-            Section:Button({Name = "Delete", Callback = function() if Flags["config_Name_text"] == "" then return end delfile(Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg") Library:UpdateConfigList() Notifications:Create({Name = "Deleted Config (" ..  Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg" .. ")"}) end})
+            Section:Textbox({Name = "Имя Конфига", Flag = "config_Name_text", default = ""})
+            Section:Button({Name = "Сохранить", Callback = function() if Flags["config_Name_text"] == "" then return end writefile(Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg", Library:GetConfig()) Library:UpdateConfigList() Notifications:Create({Name = "Saved Config (" ..  Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg" .. ")"}) end})
+            Section:Button({Name = "Загрузить", Callback = function() if Flags["config_Name_text"] == "" then return end Library:LoadConfig(readfile(Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg")) Library:UpdateConfigList() Notifications:Create({Name = "Loaded Config (" ..  Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg" .. ")"}) end})
+            Section:Button({Name = "Удалить", Callback = function() if Flags["config_Name_text"] == "" then return end delfile(Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg") Library:UpdateConfigList() Notifications:Create({Name = "Deleted Config (" ..  Library.Directory .. "/configs/" .. Flags["config_Name_text"] .. ".cfg" .. ")"}) end})
 
             local Section = Tab:Section({Name = "Other", Side = "Right"})
             Section:Label({Name = "Accent Color"}):Colorpicker({Callback = function(color, alpha) Library:RefreshTheme("accent", color) end, Color = themes.preset.accent})
