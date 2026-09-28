@@ -1022,8 +1022,8 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
     -- Library element functions
         function Library:Window(properties)
             local Cfg = {
-                Prefix = properties.Prefix or "ASTROMA";
-                Suffix = properties.Suffix or ".BETA";
+                Prefix = properties.Prefix or "T.ME/NINE99";
+                Suffix = properties.Suffix or "HOOK";
                 Size = properties.Size or dim2(0, 840, 0, 581);
                 TabInfo;
                 Items = {};
