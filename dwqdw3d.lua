@@ -29,7 +29,7 @@
 
     local themes = {
         preset = {
-            accent = rgb(236, 133, 131),
+            accent = rgb(177, 177, 177),
             window_outline = rgb(0, 0, 0),
             inline = rgb(25, 27, 27),
             background = rgb(17, 19, 19),
@@ -1022,8 +1022,8 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
     -- Library element functions
         function Library:Window(properties)
             local Cfg = {
-                Prefix = properties.Prefix or "T.ME/NINE99";
-                Suffix = properties.Suffix or "HOOK";
+                Prefix = properties.Prefix or "LITVIN";
+                Suffix = properties.Suffix or "ХУК";
                 Size = properties.Size or dim2(0, 840, 0, 581);
                 TabInfo;
                 Items = {};
