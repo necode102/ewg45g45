@@ -1121,14 +1121,14 @@ Library:Create( "UIPadding" , {
 });
                 
                 Items.PageHolder = Library:Create( "Frame" , {
-                    Parent = Items.Inline;
-                    Name = "\0";
-                    Position = dim2(0, 140, 0, 1);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(1, -141, 1, -2);
-                    BorderSizePixel = 0;
-                    BackgroundColor3 = themes.preset.background
-                });	Library:Themify(Items.PageHolder, "background", "BackgroundColor3")
+    Parent = Items.Inline;
+    Name = "\0";
+    Position = dim2(0, 1, 0, 1);
+    BorderColor3 = rgb(0, 0, 0);
+    Size = dim2(1, -2, 1, -38);
+    BorderSizePixel = 0;
+    BackgroundColor3 = themes.preset.background
+});	Library:Themify(Items.PageHolder, "background", "BackgroundColor3")
                 
                 Items.TitleHolder = Library:Create( "Frame" , {
                     Parent = Items.PageHolder;
@@ -1275,29 +1275,29 @@ Library:Create( "UIPadding" , {
             local Items = Cfg.Items; do 
                 -- Tab buttons 
                     Items.Button = Library:Create( "TextButton" , {
-                        Active = false;
-                        BorderColor3 = rgb(0, 0, 0);
-                        Text = "";
-                        AutoButtonColor = false;
-                        Parent = self.Items.TabHolder;
-                        BackgroundTransparency = 1;
-                        Name = "\0";
-                        Size = dim2(1, 0, 0, 30);
-                        Selectable = false;
-                        BorderSizePixel = 0;
-                        BackgroundColor3 = rgb(255, 255, 255)
-                    });
-                    
-                    Items.Holder = Library:Create( "Frame" , {
-                        Parent = Items.Button;
-                        Name = "\0";
-                        BackgroundTransparency = 1;
-                        Position = dim2(0, 6, 0, 0);
-                        BorderColor3 = rgb(0, 0, 0);
-                        Size = dim2(1, -13, 1, 0);
-                        BorderSizePixel = 0;
-                        BackgroundColor3 = themes.preset.visible_backgrounds
-                    });	Library:Themify(Items.Holder, "visible_backgrounds", "BackgroundColor3")
+    Active = false;
+    BorderColor3 = rgb(0, 0, 0);
+    Text = "";
+    AutoButtonColor = false;
+    Parent = self.Items.TabHolder;
+    BackgroundTransparency = 1;
+    Name = "\0";
+    Size = dim2(0, 110, 1, -8);
+    Selectable = false;
+    BorderSizePixel = 0;
+    BackgroundColor3 = rgb(255, 255, 255)
+});
+
+Items.Holder = Library:Create( "Frame" , {
+    Parent = Items.Button;
+    Name = "\0";
+    BackgroundTransparency = 1;
+    Position = dim2(0, 0, 0, 0);
+    BorderColor3 = rgb(0, 0, 0);
+    Size = dim2(1, 0, 1, 0);
+    BorderSizePixel = 0;
+    BackgroundColor3 = themes.preset.visible_backgrounds
+});	Library:Themify(Items.Holder, "visible_backgrounds", "BackgroundColor3")
                     
                     Items.Icon = Library:Create( "ImageLabel" , {
                         ImageColor3 = themes.preset.deselected;
@@ -1336,20 +1336,16 @@ Library:Create( "UIPadding" , {
                         PaddingLeft = dim(0, 8)
                     });
                     
-                    Items.Indicator = Library:Create( "ImageLabel" , {
-                        ImageColor3 = themes.preset.accent;
-                        ImageTransparency = 1;
-                        BackgroundTransparency = 1;
-                        BorderColor3 = rgb(0, 0, 0);
-                        Parent = Items.Button;
-                        AnchorPoint = vec2(0, 0.5);
-                        Image = "rbxassetid://126397903791071";
-                        Name = "\0";
-                        Position = dim2(0, 0, 0.5, 0);
-                        Size = dim2(0, 2, 0, 19);
-                        BorderSizePixel = 0;
-                        BackgroundColor3 = rgb(255, 255, 255)
-                    });	Library:Themify(Items.Indicator, "accent", "ImageColor3")                
+                    Items.Indicator = Library:Create( "Frame" , {
+    BackgroundColor3 = themes.preset.accent;
+    BackgroundTransparency = 1;
+    BorderSizePixel = 0;
+    Parent = Items.Button;
+    AnchorPoint = vec2(0.5, 1);
+    Position = dim2(0.5, 0, 1, 0);
+    Size = dim2(1, -12, 0, 2);
+    Name = "\0";
+});	Library:Themify(Items.Indicator, "accent", "BackgroundColor3")            
                 -- 
 
                 -- Page directory 
@@ -1431,7 +1427,7 @@ Library:Create( "UIPadding" , {
                 local Tab = self.TabInfo
                 
                 if Tab then
-                    Library:Tween(Tab.Indicator, {ImageTransparency = 1})
+                    Library:Tween(Tab.Indicator, {BackgroundTransparency = 1})
                     Library:Tween(Tab.Holder, {BackgroundTransparency = 1})
                     Library:Tween(Tab.Icon, {ImageColor3 = themes.preset.deselected})
                     Library:Tween(Tab.SectionTitle, {TextColor3 = themes.preset.deselected})
@@ -1443,7 +1439,8 @@ Library:Create( "UIPadding" , {
                     self.Items.Fade.BackgroundTransparency = 0 
                     Library:Tween(self.Items.Fade, {BackgroundTransparency = 1})
 
-                Library:Tween(Items.Indicator, {ImageTransparency = 0})
+                Library:Tween(Tab.Indicator, {BackgroundTransparency = 1})
+..
                 Library:Tween(Items.Holder, {BackgroundTransparency = 0})
                 Library:Tween(Items.Icon, {ImageColor3 = themes.preset.accent})
                 Library:Tween(Items.SectionTitle, {TextColor3 = themes.preset.text_color})
