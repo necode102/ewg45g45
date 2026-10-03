@@ -1082,7 +1082,7 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
     AnchorPoint = vec2(0, 1);
     Position = dim2(0, 1, 1, -1);
     BorderColor3 = rgb(0, 0, 0);
-    Size = dim2(1, -2, 0, 36);
+    Size = dim2(1, -2, 0, 47);
     BorderSizePixel = 0;
     BackgroundColor3 = rgb(12, 14, 14)
 });
@@ -1125,7 +1125,7 @@ Library:Create( "UIPadding" , {
     Name = "\0";
     Position = dim2(0, 1, 0, 1);
     BorderColor3 = rgb(0, 0, 0);
-    Size = dim2(1, -2, 1, -38);
+    Size = dim2(1, -2, 1, -47);
     BorderSizePixel = 0;
     BackgroundColor3 = themes.preset.background
 });	Library:Themify(Items.PageHolder, "background", "BackgroundColor3")
