@@ -1298,6 +1298,9 @@ Items.Holder = Library:Create( "Frame" , {
     BorderSizePixel = 0;
     BackgroundColor3 = themes.preset.visible_backgrounds
 });	Library:Themify(Items.Holder, "visible_backgrounds", "BackgroundColor3")
+
+
+
                     
                     Items.Icon = Library:Create( "ImageLabel" , {
                         ImageColor3 = themes.preset.deselected;
@@ -1423,33 +1426,32 @@ Items.Holder = Library:Create( "Frame" , {
                 -- 
             end 
 
-            function Cfg.OpenTab() 
-                local Tab = self.TabInfo
-                
-                if Tab then
-                    Library:Tween(Tab.Indicator, {BackgroundTransparency = 1})
-                    Library:Tween(Tab.Holder, {BackgroundTransparency = 1})
-                    Library:Tween(Tab.Icon, {ImageColor3 = themes.preset.deselected})
-                    Library:Tween(Tab.SectionTitle, {TextColor3 = themes.preset.deselected})
+   function Cfg.OpenTab() 
+    local Tab = self.TabInfo
+    
+    if Tab then
+        Library:Tween(Tab.Indicator, {BackgroundTransparency = 1})
+        Library:Tween(Tab.Holder, {BackgroundTransparency = 1})
+        Library:Tween(Tab.Icon, {ImageColor3 = themes.preset.deselected})
+        Library:Tween(Tab.SectionTitle, {TextColor3 = themes.preset.deselected})
 
-                    Tab.Pages.Visible = false
-                    Tab.Pages.Parent = Library.Other
-                end
+        Tab.Pages.Visible = false
+        Tab.Pages.Parent = Library.Other
+    end
 
-                    self.Items.Fade.BackgroundTransparency = 0 
-                    Library:Tween(self.Items.Fade, {BackgroundTransparency = 1})
+    self.Items.Fade.BackgroundTransparency = 0 
+    Library:Tween(self.Items.Fade, {BackgroundTransparency = 1})
 
-                Library:Tween(Tab.Indicator, {BackgroundTransparency = 1})
-..
-                Library:Tween(Items.Holder, {BackgroundTransparency = 0})
-                Library:Tween(Items.Icon, {ImageColor3 = themes.preset.accent})
-                Library:Tween(Items.SectionTitle, {TextColor3 = themes.preset.text_color})
+    Library:Tween(Items.Indicator, {BackgroundTransparency = 0})
+    Library:Tween(Items.Holder, {BackgroundTransparency = 0})
+    Library:Tween(Items.Icon, {ImageColor3 = themes.preset.accent})
+    Library:Tween(Items.SectionTitle, {TextColor3 = themes.preset.text_color})
 
-                Items.Pages.Parent = self.Items.Pages;
-                Items.Pages.Visible = true
-                
-                self.TabInfo = Cfg.Items
-            end
+    Items.Pages.Parent = self.Items.Pages;
+    Items.Pages.Visible = true
+    
+    self.TabInfo = Cfg.Items
+end
 
             Items.Button.MouseButton1Down:Connect(function()
                 Cfg.OpenTab()
