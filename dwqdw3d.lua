@@ -29,7 +29,7 @@
 
     local themes = {
         preset = {
-            accent = rgb(127, 144, 242),
+            accent = rgb(215, 91, 91),
             window_outline = rgb(0, 0, 0),
             inline = rgb(25, 27, 27),
             background = rgb(17, 19, 19),
@@ -1024,7 +1024,7 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
             local Cfg = {
                 Prefix = properties.Prefix or "LITVIN";
                 Suffix = properties.Suffix or "ХУК";
-                Size = properties.Size or dim2(0, 640, 0, 581);
+                Size = properties.Size or dim2(0, 660, 0, 581);
                 TabInfo;
                 Items = {};
             }
@@ -2647,7 +2647,7 @@ end
 
         function Library:Configs(window) 
             local Text;
-            local Tab = window:Tab({Name = "Settings"})
+            local Tab = window:Tab({Name = "Settings",Icon = "rbxassetid://9405931578"})
 
             local Section = Tab:Section({Name = "Main", Side = "Left"})
             ConfigHolder = Section:Dropdown({Name = "Configs", Options = {"Report", "This", "Error", "To", "Finobe"}, Callback = function(option) if Text then Text.Set(option) end end, Flag = "config_Name_list"}); Library:UpdateConfigList()
