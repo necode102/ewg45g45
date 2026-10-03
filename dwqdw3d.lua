@@ -1077,24 +1077,25 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
                 });	Library:Themify(Items.Inline, "inline", "BackgroundColor3")
                 
                 Items.TabHolderFrame = Library:Create( "Frame" , {
-                    Parent = Items.Inline;
-                    Name = "\0";
-                    Position = dim2(0, 1, 0, 1);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(0, 139, 1, -2);
-                    BorderSizePixel = 0;
-                    BackgroundColor3 = rgb(12, 14, 14)
-                });
-                
-                Items.Filler = Library:Create( "Frame" , {
-                    Parent = Items.TabHolderFrame;
-                    Name = "\0";
-                    Position = dim2(1, -1, 0, 0);
-                    BorderColor3 = rgb(0, 0, 0);
-                    Size = dim2(0, 1, 1, 0);
-                    BorderSizePixel = 0;
-                    BackgroundColor3 = themes.preset.inline
-                });	Library:Themify(Items.Filler, "inline", "BackgroundColor3")
+    Parent = Items.Inline;
+    Name = "\0";
+    AnchorPoint = vec2(0, 1);
+    Position = dim2(0, 1, 1, -1);
+    BorderColor3 = rgb(0, 0, 0);
+    Size = dim2(1, -2, 0, 36);
+    BorderSizePixel = 0;
+    BackgroundColor3 = rgb(12, 14, 14)
+});
+
+Items.Filler = Library:Create( "Frame" , {
+    Parent = Items.TabHolderFrame;
+    Name = "\0";
+    Position = dim2(0, 0, 0, 0);
+    BorderColor3 = rgb(0, 0, 0);
+    Size = dim2(1, 0, 0, 1);
+    BorderSizePixel = 0;
+    BackgroundColor3 = themes.preset.inline
+});	Library:Themify(Items.Filler, "inline", "BackgroundColor3")
                 
                 Items.TabHolder = Library:Create( "Frame" , {
                     Parent = Items.TabHolderFrame;
@@ -1107,15 +1108,17 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
                 });	
                 
                 Library:Create( "UIListLayout" , {
-                    Parent = Items.TabHolder;
-                    Padding = dim(0, 6);
-                    SortOrder = Enum.SortOrder.LayoutOrder
-                });
-                
-                Library:Create( "UIPadding" , {
-                    Parent = Items.TabHolder;
-                    PaddingTop = dim(0, 6)
-                });
+    Parent = Items.TabHolder;
+    Padding = dim(0, 6);
+    FillDirection = Enum.FillDirection.Horizontal;
+    VerticalAlignment = Enum.VerticalAlignment.Center;
+    SortOrder = Enum.SortOrder.LayoutOrder
+});
+
+Library:Create( "UIPadding" , {
+    Parent = Items.TabHolder;
+    PaddingLeft = dim(0, 6)
+});
                 
                 Items.PageHolder = Library:Create( "Frame" , {
                     Parent = Items.Inline;
