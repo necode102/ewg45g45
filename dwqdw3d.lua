@@ -29,7 +29,7 @@
 
     local themes = {
         preset = {
-            accent = rgb(177, 177, 177),
+            accent = rgb(127, 144, 242),
             window_outline = rgb(0, 0, 0),
             inline = rgb(25, 27, 27),
             background = rgb(17, 19, 19),
@@ -1024,7 +1024,7 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
             local Cfg = {
                 Prefix = properties.Prefix or "LITVIN";
                 Suffix = properties.Suffix or "ХУК";
-                Size = properties.Size or dim2(0, 840, 0, 581);
+                Size = properties.Size or dim2(0, 840, 0, 481);
                 TabInfo;
                 Items = {};
             }
