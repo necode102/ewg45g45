@@ -1024,7 +1024,7 @@ elseif type(Value) == "table" and Value["active"] ~= nil then
             local Cfg = {
                 Prefix = properties.Prefix or "LITVIN";
                 Suffix = properties.Suffix or "ХУК";
-                Size = properties.Size or dim2(0, 710, 0, 581);
+                Size = properties.Size or dim2(0, 410, 0, 381);
                 TabInfo;
                 Items = {};
             }
