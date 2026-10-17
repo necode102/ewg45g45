@@ -164,9 +164,9 @@ local function list(direction, gap, valign)
 	})
 end
 
-local FONT      = Font.fromName("rbxasset://fonts/families/Inter.json", Enum.FontWeight.Regular)
-local FONT_MED  = Font.fromName("rbxasset://fonts/families/Inter.json", Enum.FontWeight.Medium)
-local FONT_BOLD = Font.fromName("rbxasset://fonts/families/Inter.json", Enum.FontWeight.Bold)
+local FONT      = Font.fromName("Inter", Enum.FontWeight.Regular)
+local FONT_MED  = Font.fromName("Inter", Enum.FontWeight.Medium)
+local FONT_BOLD = Font.fromName("Inter", Enum.FontWeight.Bold)
 
 local function newLabel(props, children)
 	local p = {
