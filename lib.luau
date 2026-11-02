@@ -2080,6 +2080,11 @@ function library:Destroy()
 end
 library.Unload = library.Destroy
 
+library:AddTab("Ragebot")
+library:AddTab("Visuals")
+library:AddTab("Misc")
+library:AddTab("Settings")
+
 do
 
     local WATERMARK_FIELDS = {
@@ -2215,4 +2220,89 @@ do
     updateWatermark()
 end
 
+UI.settingsSection = library:AddSection("Settings", nil, "Menu", 1, 150)
+UI.settingsSection:Keybind("Menu key", Enum.KeyCode.J, function(key)
+    if key and typeof(key) == "EnumItem" and key.EnumType == Enum.KeyCode then library:SetToggleKey(key) end
+end, "Menu key", { noModeMenu = true })
+UI.settingsSection:ColorPicker("Menu accent", PINK, function(color) library:SetAccent(color) end)
+UI.settingsSection:Checkbox("Watermark", true, function(enabled)
+    F.watermarkEnabled = enabled
+    F.watermark.Visible = enabled
+    if UI.watermarkFieldsItem then UI.settingsSection:SetItemVisible(UI.watermarkFieldsItem, enabled) end
+    F.updateWatermark()
+end, { flag = "Watermark" })
+UI.settingsSection:MultiCombo("Watermark Info", F.watermarkFieldsOptions, F.defaultWatermarkFields, function(selected)
+    F.watermarkFields = selected
+    F.updateWatermark()
+end, "Watermark Info")
+UI.watermarkFieldsItem = UI.settingsSection.lastItem
+UI.settingsSection:Button("Unload menu", function() library:Destroy() end)
+
+UI.configSection = library:AddSection("Settings", nil, "Configs", 2, 260)
+F.cfgName = ""
+F.cfgSelected = nil
+UI.configList = UI.configSection:Combo("Config", { "None" }, 1, function(v)
+    F.cfgSelected = (v ~= "None") and v or nil
+end, "__cfg_list")
+UI.configNameBox = UI.configSection:TextInput("Config name", "", function(t) F.cfgName = t end, "new config name...", "__cfg_name")
+local function cfgRefresh(select)
+    local list = library:ListConfigs()
+    if #list == 0 then list = { "None" } end
+    local sel = select or F.cfgSelected
+    UI.configList:SetItems(list, sel, true)
+    local cur = UI.configList:Get()
+    F.cfgSelected = (cur ~= "None") and cur or nil
+end
+local function cfgTarget()
+    local typed = tostring(F.cfgName or ""):gsub("^%s+", ""):gsub("%s+$", "")
+    if typed ~= "" then return typed end
+    return F.cfgSelected
+end
+UI.configSection:Button("Create config", function()
+    local n = tostring(F.cfgName or ""):gsub("^%s+", ""):gsub("%s+$", "")
+    if n == "" then return end
+    local ok = library:SaveConfig(n)
+    if ok then
+        cfgRefresh(n); UI.configNameBox:Set(""); F.cfgName = ""
+    end
+end)
+UI.configSection:Button("Save config", function()
+    local n = cfgTarget()
+    if not n then return end
+    local ok = library:SaveConfig(n)
+    if ok then cfgRefresh(n) end
+end)
+UI.configSection:Button("Load config", function()
+    local n = F.cfgSelected
+    if not n then return end
+    library:LoadConfig(n)
+end)
+UI.configSection:Button("Delete config", function()
+    local n = F.cfgSelected
+    if not n then return end
+    if library:DeleteConfig(n) then F.cfgSelected = nil; cfgRefresh() end
+end)
+UI.configSection:Button("Refresh list", function() cfgRefresh() end)
+UI.configSection:Button("Set as autoload", function()
+    local n = F.cfgSelected
+    if not n then return end
+    library:SetAutoloadConfig(n)
+end)
+UI.configSection:Button("Reset autoload", function()
+    library:SetAutoloadConfig("")
+end)
+library.ConfigIgnore["__cfg_list"] = true
+library.ConfigIgnore["__cfg_name"] = true
+cfgRefresh()
+
+applyPage()
+do
+    local auto = library:GetAutoloadConfig()
+    if auto then
+        task.defer(function()
+            local ok = library:LoadConfig(auto)
+            if ok then cfgRefresh(auto) end
+        end)
+    end
+end
 return library
