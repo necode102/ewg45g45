@@ -271,7 +271,7 @@ if typeof(syn) == "table" and typeof(syn.protect_gui) == "function" then pcall(s
 gui.Parent = GUI_PARENT
 library.Gui = gui
 
-local MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT = 740, 532
+local MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT = 606, 532
 local windowWidth, windowHeight = MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT
 local window = create("Frame", {
     Name = "Window", AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5),
@@ -314,16 +314,15 @@ local main = inset(create("Frame", {
     BackgroundColor3 = c3(Theme.bg2), Parent = window,
 }))
 
-local sidebar = create("Frame", { Name = "Sidebar", BackgroundTransparency = 1, Size = UDim2.new(0, 140, 1, 0), Parent = main })
-
+local sidebar = topStrip
 local LOGO_IMAGE = "rbxassetid://126046912203530"
-local LOGO_WIDTH, LOGO_HEIGHT = 101, 45
+local LOGO_WIDTH, LOGO_HEIGHT = 0, 0
 local LOGO_MARK_TEXT = "₽"
-local LOGO_MARK_X = 100
-local LOGO_MARK_Y = 15
-local LOGO_MARK_WIDTH = 19
-local LOGO_MARK_HEIGHT = 30
-local LOGO_MARK_TEXT_SIZE = 26
+local LOGO_MARK_X = 0
+local LOGO_MARK_Y = 0
+local LOGO_MARK_WIDTH = 0
+local LOGO_MARK_HEIGHT = 0
+local LOGO_MARK_TEXT_SIZE = 0
 create("ImageLabel", {
     Name = "Logo", BackgroundTransparency = 1, Image = LOGO_IMAGE,
     Position = UDim2.fromOffset(18, 18), Size = UDim2.fromOffset(LOGO_WIDTH, LOGO_HEIGHT),
@@ -335,10 +334,9 @@ local logoMark = label(sidebar, LOGO_MARK_TEXT, {
     TextXAlignment = Enum.TextXAlignment.Center, TextYAlignment = Enum.TextYAlignment.Center, ZIndex = 2,
 })
 
-local navHolder = create("Frame", { Name = "Tabs", BackgroundTransparency = 1, Position = UDim2.fromOffset(3, 77), Size = UDim2.fromOffset(134, 400), Parent = sidebar })
-
+local navHolder = create("Frame", { Name = "Tabs", BackgroundTransparency = 1, Position = UDim2.fromOffset(10, 4), Size = UDim2.new(1, -68, 0, 23), Parent = sidebar })
 local content = inset(create("Frame", {
-    Name = "Content", Position = UDim2.fromOffset(140, 6), Size = UDim2.new(1, -146, 1, -12),
+    Name = "Content", Position = UDim2.fromOffset(6, 6), Size = UDim2.new(1, -12, 1, -12),
     BackgroundColor3 = c3(Theme.bg2), Parent = main,
 }))
 
@@ -1499,13 +1497,13 @@ function library:AddTab(name, subtabs)
     local index = #self.Tabs + 1
     local tab = { name = name, subtabs = subtabs or {}, pages = {}, current = 1, nextSub = 1, hover = 0, sel = (index == 1) and 1 or 0 }
 
-    local btn = hitbox(navHolder, UDim2.fromOffset(134, 32), UDim2.fromOffset(0, (index - 1) * 35))
+    local btn = hitbox(navHolder, UDim2.fromOffset(96, 23), UDim2.fromOffset((index - 1) * 100, 0))
     btn.Name = "Tab_" .. name
     create("UIStroke", { Color = BLACK, Thickness = 1, ApplyStrokeMode = Enum.ApplyStrokeMode.Border, Parent = btn })
     btn.BackgroundColor3 = c3(Theme.tab)
     btn.BackgroundTransparency = 1
-    local accent = create("Frame", { Name = "Accent", BackgroundColor3 = c3(Theme.scheme), BackgroundTransparency = 1, Size = UDim2.fromOffset(3, 32), ZIndex = 2, Parent = btn })
-    local txt = label(btn, name, { Position = UDim2.fromOffset(10, 9.5), Size = UDim2.fromOffset(118, 13), ZIndex = 2 })
+   local accent = create("Frame", { Name = "Accent", BackgroundColor3 = c3(Theme.scheme), BackgroundTransparency = 1, Position = UDim2.new(0, 0, 1, -2), Size = UDim2.new(1, 0, 0, 2), ZIndex = 2, Parent = btn })
+local txt = label(btn, name, { Position = UDim2.fromOffset(0, 5), Size = UDim2.new(1, 0, 0, 13), TextXAlignment = Enum.TextXAlignment.Center, ZIndex = 2 })
     tab.button, tab.accent, tab.label = btn, accent, txt
     btn.MouseButton1Click:Connect(function()
         if Nav.nextTab ~= index then
@@ -1683,7 +1681,7 @@ local function applyWindowLayout(width, height)
     windowHeight = math.max(MIN_WINDOW_HEIGHT, math.floor(height + 0.5))
     window.Size = UDim2.fromOffset(windowWidth, windowHeight)
 
-    local contentWidth = windowWidth - 166
+    local contentWidth = windowWidth - 32
     local sectionWidth = math.max(274, math.floor((contentWidth - 26) / 2))
     local heightGrowth = windowHeight - MIN_WINDOW_HEIGHT
     for _, tab in ipairs(library.Tabs) do
